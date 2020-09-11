@@ -1,15 +1,18 @@
-var express = require('express')
+import React from 'react'
+import express from 'express'
+import { renderToString, renderToStaticMarkup } from 'react-dom/server';
+import Count from './count.jsx'
 
+const app = express()
 
-/**
- * 服务器端渲染的原始方式，因此就有了ejs，pug等node服务端模版引擎
- * */
-var app = express()
-
-app.get('/helloword', function (req, res) {
+app.get('/helloword',  (req, res) => {
     res.send('hello word')
 })
-app.get('/', function(req, res){
+app.get('/', (req, res) => {
+    //这里可以对比观察一下renderToString和renderToStaticMarkup两个方法的输出
+    const content = renderToString(<Count count={12} />)
+    console.log(content)
+    console.log(renderToStaticMarkup(<Count count={10} />))
     res.send(
         `<html>
             <head>
@@ -19,14 +22,14 @@ app.get('/', function(req, res){
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </head>  
             <body>
-                <div>这是一段HTML</div>
+                <div id="root">${content}</div>
             </body>
         </html>`
     )
 })
 
-var server = app.listen(3000, function(){
-    var host = server.address().address;
-    var port = server.address().port;
+const server = app.listen(3000, function(){
+    const host = server.address().address;
+    const port = server.address().port;
     console.log('server listening at : localhost:' + port)
 })
