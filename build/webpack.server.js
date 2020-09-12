@@ -1,10 +1,13 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const {merge} = require('webpack-merge');
+const baseConfig = require('./webpack.base');
+
 /**
  * 这里可以注释掉externals，然后执行打包程序，观察终端输出及dist/server.js文件，会发现
  * webpack将express，react等依赖也打包进去了，而这些依赖在node环境中是不需要打包进去的。
  * */
-module.exports = {
+const config = {
     mode: 'development',
     // 浏览器和服务端运行环境不同，有些包在node环境中是存在的，在客户端不存在。
     // 比如同是const path = require('path')，在服务端打包时可以不用将path打包进来。
@@ -16,28 +19,11 @@ module.exports = {
     externals: [
         nodeExternals(),
     ],
-    entry: path.resolve(__dirname, '../src/index.js'),
+    entry: path.resolve(__dirname, '../src/server/index.js'),
     output: {
         filename: "server.js",
         path: path.resolve(__dirname, '../dist'),
     },
-    module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                include: path.resolve(__dirname, '../src'),
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: [
-                                '@babel/preset-env',
-                                '@babel/preset-react',
-                            ],
-                        },
-                    },
-                ],
-            },
-        ],
-    },
 }
+
+module.exports = merge(baseConfig, config)

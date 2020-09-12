@@ -1,14 +1,17 @@
-这里创建了一个简单的 `count` 组件，显然这个组件还不能直接用。因为需要配置babel等
-编译react组件
+运行：npm run build-server以及npm run build-client执行服务端和客户端的打包程序。打包完成后
+进入dist目录执行node server.js
+
+在demo-02中，由服务端生成的html，点击事件没有生效。这是因为服务端不像浏览器一样能够执行dom绑定
+等操作，服务端生成的只是个静态的html。
+
+# 按钮点击事件如何才能生效？
+
+这里的思路主要是：通过服务端生成html模版返回给浏览器。然后再打包一份客户端的代码脚本插入到
+服务端的html模版里返回给浏览器，浏览器会下载这些脚本并执行。React.hydrate会尝试往
+已经生成的dom中绑定事件等。这就是同构的一个过程。
+
+因此需要配置一份客户端打包的环境，即webpack配置。这个配置和单页应用的配置基本一致。不同的是
+这里打包后的脚本需要插入到服务端生成的模版中。
 
 
-这个demo有以下几点需要注意的地方：
-
-1. 服务端需要配置webpack以支持编译React组件。
-    - 注意node环境的一些差异，比如设置 `target: 'node'`，指定打包的环境。 设置`externals`
-    指定不需要打包node_modules下面的依赖。
-
-2. 注意输出renderToString及renderToStaticMarkup，并观察控制台，对比一下生成的html字符串的差异。
-    可以发现renderToString会在dom上插入额外的信息，比如data-reactroot
-
-关于这两个方法的概念，React官网已经介绍的很清楚了，可以翻翻
+其次是单页应用的入口使用的React.render()方法，但是这里需要使用React.hydrate

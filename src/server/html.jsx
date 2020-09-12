@@ -1,6 +1,6 @@
 import React from 'react';
 
-const  Index = ({ children }) => {
+const  Index = ({ children, scriptTags }) => {
     return (
         <html lang="en">
             <head>
@@ -11,7 +11,8 @@ const  Index = ({ children }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </head>
             <body>
-                <div id="main" dangerouslySetInnerHTML={{ __html: children }} />
+                <div id="root" dangerouslySetInnerHTML={{ __html: children }} />
+                <script src={scriptTags}></script>
             </body>
         </html>
     );
