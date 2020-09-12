@@ -8,6 +8,7 @@
     - 注意node环境的一些差异，比如设置 `target: 'node'`，指定打包的环境。 设置`externals`
     指定不需要打包node_modules下面的依赖。
 
-2. 注意输出renderToString及renderToStaticMarkup，并观察控制台，对比一下生成的html字符串的差异
+2. 注意输出renderToString及renderToStaticMarkup，并观察控制台，对比一下生成的html字符串的差异。
+    可以发现renderToString会在dom上插入额外的信息，比如data-reactroot
 
 关于这两个方法的概念，React官网已经介绍的很清楚了，可以翻翻

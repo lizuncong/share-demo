@@ -2,6 +2,7 @@ import React from 'react'
 import express from 'express'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import Count from './count.jsx'
+import Html from './html.jsx'
 
 const app = express()
 
@@ -14,7 +15,8 @@ app.get('/', (req, res) => {
     console.log(content)
     console.log(renderToStaticMarkup(<Count count={10} />))
     res.send(
-        `<html>
+       `<!doctype html>        
+        <html>
             <head>
                 <meta charSet="utf-8" />
                 <title>demo1</title>
@@ -26,6 +28,16 @@ app.get('/', (req, res) => {
             </body>
         </html>`
     )
+})
+
+// 使用renderToStaticMarkup渲染html模版，方便html模版的编写
+app.get('/html', (req, res) => {
+    const content = renderToString(<Count count={24} />)
+    const data = {
+        children: content
+    }
+    const html = renderToStaticMarkup(<Html {...data} />);
+    res.send(`<!doctype html>${html}`)
 })
 
 const server = app.listen(3000, function(){
