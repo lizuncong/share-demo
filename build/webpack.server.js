@@ -26,12 +26,8 @@ const config = {
         libraryTarget: 'commonjs2',
     },
     node: {
-        console: false,
-        global: false,
-        process: false,
-        Buffer: false,
-        __filename: false,
-        __dirname: false,
+        // https://webpack.js.org/configuration/node/#node__dirname
+        __dirname: false, // webpack 打包target为'node'时，这里默认就是false，为啥注释掉会有问题？？
     },
 }
 
