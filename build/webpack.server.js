@@ -8,7 +8,6 @@ const baseConfig = require('./webpack.base');
  * webpack将express，react等依赖也打包进去了，而这些依赖在node环境中是不需要打包进去的。
  * */
 const config = {
-    mode: 'development',
     // 浏览器和服务端运行环境不同，有些包在node环境中是存在的，在客户端不存在。
     // 比如同是const path = require('path')，在服务端打包时可以不用将path打包进来。
     // 但是在浏览器环境下，就必须要引入这个包并且打包进来。所以这里要指定target环境予以区分。
