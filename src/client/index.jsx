@@ -6,4 +6,4 @@ const root = document.getElementById('root');
 ReactDom.hydrate(
     <Home />,
     root,
-);;
+);
