@@ -1,3 +1,5 @@
+运行 npm run build-server，并cd dist，运行node server.js
+
 这里创建了一个简单的 `count` 组件，显然这个组件还不能直接用。因为需要配置babel等
 编译react组件
 
