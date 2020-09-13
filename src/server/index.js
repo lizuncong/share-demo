@@ -25,6 +25,8 @@ app.get('*', (req, res) => {
         <Router location={req.url} context={context} />,
     );
 
+    console.log('req.path=====', req.path)
+
     // 这里是个坑，renderToString方法一定要在webExtractor.getScriptElements，
     // webExtractor.getLinkElements，webExtractor.getStyleTags方法前面执行，不然会有
     // 问题，1.控制台会提示Did not expect server HTML to contain a <div>

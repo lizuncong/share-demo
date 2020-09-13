@@ -7,6 +7,8 @@ const config = {
   output: {
     filename: "client.js",
     path: path.resolve(__dirname, '../dist/web'),
+    publicPath: '/',
+    chunkFilename: '[name].chunk.js'
   },
 }
 
