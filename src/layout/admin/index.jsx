@@ -1,11 +1,12 @@
 import React, { memo } from 'react';
 import NavLeft from './navLeft';
+import styles from './index.module.less';
 
 const Index = memo(({ children }) => {
   return (
-      <div style={{ height: '100%', display: 'flex', background: 'red'}}>
+      <div className={styles.container}>
         <NavLeft />
-        <div style={{ flex: '1', padding: '12px', background: 'green' }}>
+        <div className={styles.content}>
           {children}
         </div>
       </div>

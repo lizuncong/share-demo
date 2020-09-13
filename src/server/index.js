@@ -43,6 +43,10 @@ app.get('*', (req, res) => {
 
     data.children = content;
 
+    data.cssLinks = [
+        // "https://cdnjs.cloudflare.com/ajax/libs/antd/4.0.1/antd.min.css"
+    ];
+
     if (context.action === 'REPLACE') { // 需要重定向
         res.redirect(301, context.url);
         console.log('需要重定向', context)

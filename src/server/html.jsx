@@ -1,6 +1,6 @@
 import React from 'react';
 
-const  Index = ({ children, scriptTags }) => {
+const  Index = ({ children, scriptTags, linkTags, styleTags, cssLinks }) => {
     return (
         <html lang="en">
             <head>
@@ -9,6 +9,13 @@ const  Index = ({ children, scriptTags }) => {
                 <title>react ssr哦</title>
                 <meta name="description" content="这是一个非常酷的网站" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
+                {linkTags}
+                {styleTags}
+                {
+                  cssLinks.map((csslink) => (
+                      <link key={csslink} href={csslink} rel="stylesheet" />
+                  ))
+                }
             </head>
             <body>
                 <div id="root" dangerouslySetInnerHTML={{ __html: children }} />

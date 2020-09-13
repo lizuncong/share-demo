@@ -1,0 +1,8 @@
+body{
+    margin: 0;
+}
+
+#root{
+    height: calc(100vh);
+    overflow: hidden;
+}

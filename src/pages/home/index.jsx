@@ -1,4 +1,5 @@
 import React, { memo, useState } from 'react';
+import styles from './index.module.less';
 
 const Index = memo((props) => {
   console.log('home..props', props)
@@ -10,7 +11,7 @@ const Index = memo((props) => {
     props.staticContext.testPageName = 'home'
   }
   return (
-      <div>
+      <div className={styles.home}>
         <div>
           这是首页
         </div>

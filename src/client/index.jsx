@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { loadableReady } from '@loadable/component'
 import Router from '../router/client.jsx'
+import './common.css';
 
 const root = document.getElementById('root');
 // 注意这里使用的是hydrate，而不是ReactDom.render
