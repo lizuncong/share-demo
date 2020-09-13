@@ -1,17 +1,11 @@
 运行：npm run build-server以及npm run build-client执行服务端和客户端的打包程序。打包完成后
 进入dist目录执行node server.js
 
-在demo-02中，由服务端生成的html，点击事件没有生效。这是因为服务端不像浏览器一样能够执行dom绑定
-等操作，服务端生成的只是个静态的html。
 
-# 按钮点击事件如何才能生效？
+主要介绍react router的集成。
+react router官网有关于服务端渲染路由的介绍以及代码分割的介绍，建议感兴趣的大佬细细品品，
+就差不多了。这些介绍对实现服务端渲染至关重要。
 
-这里的思路主要是：通过服务端生成html模版返回给浏览器。然后再打包一份客户端的代码脚本插入到
-服务端的html模版里返回给浏览器，浏览器会下载这些脚本并执行。React.hydrate会尝试往
-已经生成的dom中绑定事件等。这就是同构的一个过程。
+`https://reactrouter.com/web/guides/server-rendering`
 
-因此需要配置一份客户端打包的环境，即webpack配置。这个配置和单页应用的配置基本一致。不同的是
-这里打包后的脚本需要插入到服务端生成的模版中。
-
-
-其次是单页应用的入口使用的React.render()方法，但是这里需要使用React.hydrate
+`https://reactrouter.com/web/guides/code-splitting`
