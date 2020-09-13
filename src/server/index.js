@@ -3,7 +3,6 @@ import express from 'express'
 import path from 'path'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { ChunkExtractor } from '@loadable/server';
-import Home from '../pages/home/index.jsx'
 import Router from '../router/server';
 import Html from './html.jsx'
 
