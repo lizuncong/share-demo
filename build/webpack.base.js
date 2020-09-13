@@ -1,6 +1,7 @@
 const path = require('path');
+const LoadablePlugin = require('@loadable/webpack-plugin')
 
-module.exports = {
+module.exports = (target) => ({
   mode: 'development',
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -18,10 +19,19 @@ module.exports = {
                 '@babel/preset-env',
                 '@babel/preset-react',
               ],
+              plugins: [
+                '@loadable/babel-plugin',
+              ],
             },
           },
         ],
       },
     ],
   },
-}
+  plugins: [
+    new LoadablePlugin({
+      writeToDisk: true,
+      filename: `loadable-stats-${target}.json`,
+    })
+  ],
+})

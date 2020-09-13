@@ -1,10 +1,13 @@
 import React, { memo } from 'react'
 import { Redirect, Switch, Route } from 'react-router-dom'
-import AdminLayout from '../layout/admin/index';
-import Home from '../pages/home/index';
-import ProductList from '../pages/product-list/index'
-import NotFound from '../pages/404/index';
-import Login from '../pages/login/index';
+import loadable from '@loadable/component'
+
+const AdminLayout = loadable(() => import(/* webpackChunkName: 'adminLayout' */'../layout/admin/index'));
+const Home = loadable(() => import(/* webpackChunkName: 'home' */'../pages/home/index'));
+const ProductList = loadable(() => import(/* webpackChunkName: 'productList' */'../pages/product-list/index'));
+const NotFound = loadable(() => import(/* webpackChunkName: 'notFound' */'../pages/404/index'));
+const Login = loadable(() => import(/* webpackChunkName: 'login' */'../pages/login/index'));
+
 
 /**
  * 当路由不匹配时，实现404页面有两种方法：

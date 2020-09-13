@@ -12,7 +12,7 @@ const  Index = ({ children, scriptTags }) => {
             </head>
             <body>
                 <div id="root" dangerouslySetInnerHTML={{ __html: children }} />
-                <script src={scriptTags}></script>
+                {scriptTags}
             </body>
         </html>
     );

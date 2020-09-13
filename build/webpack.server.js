@@ -21,8 +21,18 @@ const config = {
     entry: path.resolve(__dirname, '../src/server/index.js'),
     output: {
         filename: "server.js",
+        chunkFilename: 'node/[name].js',
         path: path.resolve(__dirname, '../dist'),
+        libraryTarget: 'commonjs2',
+    },
+    node: {
+        console: false,
+        global: false,
+        process: false,
+        Buffer: false,
+        __filename: false,
+        __dirname: false,
     },
 }
 
-module.exports = merge(baseConfig, config)
+module.exports = merge(baseConfig('server'), config)
