@@ -13,6 +13,7 @@ module.exports = (target) => ({
   mode: 'development',
   output: {
     publicPath: `http://localhost:3000/`,
+    // publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
