@@ -22,7 +22,7 @@ app.get('/', function(req, res){
             </head>  
             <body>
                 <div>
-                这是一段HTML
+                这是一段不能响应点击的HTML
                 <div>计数器：${data.count}</div>
                 </div>
             </body>
