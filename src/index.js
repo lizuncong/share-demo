@@ -1,3 +1,5 @@
+const path = require("path");
+
 var express = require('express')
 
 
@@ -6,10 +8,10 @@ var express = require('express')
  * */
 var app = express()
 
-app.get('/helloword', function (req, res) {
-    res.send('hello word')
-})
+app.use(express.static(path.resolve(__dirname, 'js')));
+
 app.get('/', function(req, res){
+    const data = { count: 1 }
     res.send(
         `<html>
             <head>
@@ -19,7 +21,35 @@ app.get('/', function(req, res){
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </head>  
             <body>
-                <div>这是一段HTML</div>
+                <div>
+                这是一段HTML
+                <div>计数器：${data.count}</div>
+                </div>
+            </body>
+        </html>`
+    )
+})
+
+/* 可以响应点击事件的demo */
+app.get('/js', function(req, res){
+    const data = { count: 1 }
+    res.send(
+        `<html>
+            <head>
+                <meta charSet="utf-8" />
+                <title>demo1</title>
+                <meta name="description" content="这是一个很好的网站" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+            </head>  
+            <body>
+                <div>
+                这是一段可以响应点击事件的HTML
+                <div>
+                    计数器：
+                    <div id="myCount">${data.count}</div>
+                </div>
+                </div>
+                <script src="/click.js" type="text/javascript"></script>
             </body>
         </html>`
     )
