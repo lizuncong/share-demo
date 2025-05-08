@@ -13,3 +13,14 @@
 
 ## 收获
 1. 从0搭建一个React SSR开发框架
+
+## 各分支简介
+- 分支：demo-01，一个简单的node服务端渲染页面
+- 分支：demo-02-react生成html，使用react在服务端渲染react组件
+- 分支：demo-03-客户端渲染搭建，客户端hydrate，使得页面能够相应用户的点击等事件
+- 分支：demo-04-react-router，集成react router
+- 分支：demo-05-代码分割，代码分割
+- 分支：demo-06-css处理，css处理
+
+可以切换以上分支，体验一步一步搭建react服务端渲染应用的过程，以及每一步主要解决了什么问题
+
